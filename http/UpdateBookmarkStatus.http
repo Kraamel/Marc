@@ -1,0 +1,8 @@
+PATCH http://localhost:3000/bookmarks/47bee5b0-25b6-11ea-9bb1-c7a132e2ed52/status
+Content-Type: application/json
+
+{
+  "status": "APPROUVED"
+}
+
+###
