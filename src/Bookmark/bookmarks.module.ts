@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { BookmarksService } from './bookmarks.service';
 import { BookmarksController } from './bookmarks.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { BookmarkRepository } from './BookmarkRepository';
+import { BookmarkRepository } from './bookmark.repository';
 
 @Module({
   imports: [

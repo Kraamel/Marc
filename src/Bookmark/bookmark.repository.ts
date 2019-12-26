@@ -1,11 +1,11 @@
 import { EntityRepository, Repository } from 'typeorm';
 import { GetBookmarksFilterDto } from './dto/get-bookmarks-filter.dto';
 import { CreateBookmarkDto } from './dto/create-bookmark.dto';
-import { Bookmark } from './Bookmark';
+import { BookmarkEntity } from './bookmark.entity';
 
-@EntityRepository(Bookmark)
-export class BookmarkRepository extends Repository<Bookmark> {
-  async getBookmarks(filterDto: GetBookmarksFilterDto): Promise<Bookmark[]> {
+@EntityRepository(BookmarkEntity)
+export class BookmarkRepository extends Repository<BookmarkEntity> {
+  async getBookmarks(filterDto: GetBookmarksFilterDto): Promise<BookmarkEntity[]> {
     const { status, search } = filterDto;
     const query = this.createQueryBuilder('bookmark');
 
@@ -19,8 +19,8 @@ export class BookmarkRepository extends Repository<Bookmark> {
     return await query.getMany();
   }
 
-  async createBookmark(createBookmarkDto: CreateBookmarkDto): Promise<Bookmark> {
-    const bookmark = new Bookmark();
+  async createBookmark(createBookmarkDto: CreateBookmarkDto): Promise<BookmarkEntity> {
+    const bookmark = new BookmarkEntity();
     Object.assign(bookmark, createBookmarkDto);
     await bookmark.save();
     return bookmark;

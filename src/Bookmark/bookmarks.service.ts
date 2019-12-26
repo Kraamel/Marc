@@ -3,8 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { GetBookmarksFilterDto } from './dto/get-bookmarks-filter.dto';
 import { CreateBookmarkDto } from './dto/create-bookmark.dto';
 import { BookmarkStatus } from './BookmarkStatus';
-import { BookmarkRepository } from './BookmarkRepository';
-import { Bookmark } from './Bookmark';
+import { BookmarkRepository } from './bookmark.repository';
+import { BookmarkEntity } from './bookmark.entity';
 
 @Injectable()
 export class BookmarksService {
@@ -14,15 +14,15 @@ export class BookmarksService {
   ) {
   }
 
-  // getAllBookmarks(): Bookmark[] {
+  // getAllBookmarks(): BookmarkEntity[] {
   //   return this.bookmarks;
   // }
 
-  getBookmarks(filterDto: GetBookmarksFilterDto): Promise<Bookmark[]> {
+  getBookmarks(filterDto: GetBookmarksFilterDto): Promise<BookmarkEntity[]> {
     return this.bookmarkRepository.getBookmarks(filterDto);
   }
 
-  async getBookmarkById(id: string): Promise<Bookmark> {
+  async getBookmarkById(id: string): Promise<BookmarkEntity> {
     const found = await this.bookmarkRepository.findOne(id);
     if (!found) {
       throw new NotFoundException(`Bookmark with ID:"${id}" not found`);
@@ -30,11 +30,11 @@ export class BookmarksService {
     return found;
   }
 
-  async createBookmark(createBookmarkDto: CreateBookmarkDto): Promise<Bookmark> {
+  async createBookmark(createBookmarkDto: CreateBookmarkDto): Promise<BookmarkEntity> {
     return this.bookmarkRepository.createBookmark(createBookmarkDto);
   }
 
-  async updateBookmarkStatus(id: string, status: BookmarkStatus): Promise<Bookmark> {
+  async updateBookmarkStatus(id: string, status: BookmarkStatus): Promise<BookmarkEntity> {
     const bookmark = await this.getBookmarkById(id);
     bookmark.status = status;
     await bookmark.save();

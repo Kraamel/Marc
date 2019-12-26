@@ -3,7 +3,7 @@ import { BookmarksService } from './bookmarks.service';
 import { GetBookmarksFilterDto } from './dto/get-bookmarks-filter.dto';
 import { BookmarkStatus } from './BookmarkStatus';
 import { CreateBookmarkDto } from './dto/create-bookmark.dto';
-import { Bookmark } from './Bookmark';
+import { BookmarkEntity } from './bookmark.entity';
 import { BookmarkStatusValidationPipe } from './pipe/bookmark-status-validation.pipe';
 
 @Controller('bookmarks')
@@ -12,23 +12,23 @@ export class BookmarksController {
   }
 
   @Get()
-  getBookmarks(@Query(ValidationPipe) filterDto: GetBookmarksFilterDto): Promise<Bookmark[]> {
+  getBookmarks(@Query(ValidationPipe) filterDto: GetBookmarksFilterDto): Promise<BookmarkEntity[]> {
     return this.bookmarkService.getBookmarks(filterDto);
   }
 
   @Get('/:id')
-  getBookmarkById(@Param('id') id: string): Promise<Bookmark> {
+  getBookmarkById(@Param('id') id: string): Promise<BookmarkEntity> {
     return this.bookmarkService.getBookmarkById(id);
   }
 
   @Post()
   @UsePipes(ValidationPipe)
-  createBookmark(@Body() createBookmarkDto: CreateBookmarkDto): Promise<Bookmark> {
+  createBookmark(@Body() createBookmarkDto: CreateBookmarkDto): Promise<BookmarkEntity> {
     return this.bookmarkService.createBookmark(createBookmarkDto);
   }
 
   @Patch('/:id/status')
-  updateBookmarkStatus(@Param('id') id: string, @Body('status', BookmarkStatusValidationPipe) status: BookmarkStatus): Promise<Bookmark> {
+  updateBookmarkStatus(@Param('id') id: string, @Body('status', BookmarkStatusValidationPipe) status: BookmarkStatus): Promise<BookmarkEntity> {
     return this.bookmarkService.updateBookmarkStatus(id, status);
   }
 
