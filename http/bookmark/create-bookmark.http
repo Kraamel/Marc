@@ -1,0 +1,10 @@
+POST http://localhost:3000/bookmarks
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+
+{
+  "title": "test user2 vol 2 ",
+  "url" : "http://markbook2.com"
+}
+
+###

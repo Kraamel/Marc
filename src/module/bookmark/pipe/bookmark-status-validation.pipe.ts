@@ -1,8 +1,8 @@
 import { BadRequestException, PipeTransform } from '@nestjs/common';
-import { BookmarkStatus } from '../BookmarkStatus';
+import { BookmarkStatusEnum } from '../bookmark-status.enum';
 
 export class BookmarkStatusValidationPipe implements PipeTransform {
-  readonly allowedStatus = Object.values(BookmarkStatus);
+  readonly allowedStatus = Object.values(BookmarkStatusEnum);
 
   private isStatusValid(status: any) {
     const idx = this.allowedStatus.indexOf(status);

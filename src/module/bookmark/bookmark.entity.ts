@@ -1,9 +1,9 @@
 import { BaseEntity, Column, CreateDateColumn, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { BookmarkStatus } from './BookmarkStatus';
-import { UserEntity } from '../Auth/user.entity';
-import { TagEntity } from '../Tag/tag.entity';
+import { BookmarkStatusEnum } from './bookmark-status.enum';
+import { UserEntity } from '../auth/user.entity';
+import { TagEntity } from '../tag/tag.entity';
 
-@Entity()
+@Entity('bookmark')
 export class BookmarkEntity extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   readonly id: string;
@@ -21,7 +21,10 @@ export class BookmarkEntity extends BaseEntity {
   review: number | null;
 
   @Column()
-  status: BookmarkStatus = BookmarkStatus.TO_TEST;
+  //   type: 'enum',
+  //   enum: BookmarkStatusEnum,
+  //   default: BookmarkStatusEnum.TO_TEST,
+  status: BookmarkStatusEnum = BookmarkStatusEnum.TO_TEST;
 
   @CreateDateColumn()
   createdAt: Date;
@@ -35,7 +38,4 @@ export class BookmarkEntity extends BaseEntity {
 
   @ManyToOne(type => UserEntity, user => user.bookmarks, { eager: false })
   user: UserEntity;
-
-  @Column('uuid')
-  userId: string;
 }

@@ -1,0 +1,5 @@
+DELETE http://localhost:3000/bookmarks/9d0dd47d-e22d-465b-975a-0f8018657bd4
+Accept: application/json
+Authorization: Bearer {{auth_token}}
+
+###

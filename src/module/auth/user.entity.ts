@@ -1,8 +1,8 @@
 import { BaseEntity, Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, Unique } from 'typeorm';
 import * as bcrypt from 'bcrypt';
-import { BookmarkEntity } from '../Bookmark/bookmark.entity';
+import { BookmarkEntity } from '../bookmark/bookmark.entity';
 
-@Entity()
+@Entity('user')
 @Unique(['username'])
 export class UserEntity extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
@@ -15,9 +15,9 @@ export class UserEntity extends BaseEntity {
   password: string;
 
   @Column()
-  nickname: string;
+  username: string;
 
-  @Column()
+  @Column({ nullable: true })
   salt: string;
 
   @CreateDateColumn()

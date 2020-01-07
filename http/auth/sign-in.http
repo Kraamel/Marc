@@ -1,0 +1,11 @@
+POST http://localhost:3000/auth/signin
+Content-Type: application/json
+
+{
+  "username": "user2",
+  "password": "123AmelB"
+}
+
+> {% client.global.set("auth_token", response.body.accessToken);%}
+
+###

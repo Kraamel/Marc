@@ -1,0 +1,130 @@
+{
+  "types"     : [
+    {
+      "name": "Database",
+      "icon": "/icons/files/db.svg"
+    },
+    {
+      "name": "Images",
+      "icon": "/icons/files/image.svg"
+    },
+    {
+      "name": "SVG",
+      "icon": "/icons/files/svg.svg"
+    }
+  ],
+  "files"     : [
+    {
+      "name"    : "Main",
+      "pattern" : "^.*?(main|index|meta)+\\.[tj]s$",
+      "icon"    : "/icons/files/sketch.svg"
+    },
+    {
+      "name"    : "Barrels",
+      "pattern" : "^.*?(import|meta|public[-_]api)\\.[tj]s$",
+      "icon"    : "/icons/files/barrel.svg"
+    },
+    {
+      "name"    : "Manifest",
+      "pattern" : "^.*?\\.(webmanifest)$",
+      "icon"    : "/icons/files/clojure.svg"
+    },
+    {
+      "name"    : "Concern",
+      "pattern" : "^(?:(.*)?\\.)?((?:concern).*?)\\.(.*)$",
+      "icon"    : "/icons/files/concern.svg"
+    },
+    {
+      "name"    : "Decorator",
+      "pattern" : "^(?:(.*)?\\.)?((?:decorator|integration).*?)\\.(.*)$",
+      "icon"    : "/icons/files/decorator.svg"
+    },
+    {
+      "name"    : "Operator",
+      "pattern" : "^(?:(.*)?\\.)?((?:operator|factor|command|pipeline).*?)\\.(.*)$",
+      "icon"    : "/icons/files/operator.svg"
+    },
+    {
+      "name"    : "Angular Module",
+      "pattern" : "^(?:(.*)?\\.)?((?:module).*?)\\.[tj]s$",
+      "icon"    : "/icons/files/angularmodule.svg"
+    },
+    {
+      "name"    : "Root | Angular Module",
+      "pattern" : "module\\.[tj]s$",
+      "icon"    : "/icons/files/angularmodule.svg"
+    },
+    {
+      "name"    : "Root | Angular Component",
+      "pattern" : "component\\.[tj]s$",
+      "icon"    : "/icons/files/angularcomponent.svg"
+    },
+    {
+      "name"    : "Root | Angular Directive",
+      "pattern" : "directive\\.[tj]s$",
+      "icon"    : "/icons/files/angulardirective.svg"
+    },
+    {
+      "name"    : "Root | Angular Guard",
+      "pattern" : "guard\\.[tj]s$",
+      "icon"    : "/icons/files/angularguard.svg"
+    },
+    {
+      "name"    : "Root | Angular Service",
+      "pattern" : "service\\.[tj]s$",
+      "icon"    : "/icons/files/angularservice.svg"
+    },
+    {
+      "name"    : "Root | Angular Pipe",
+      "pattern" : "pipe\\.[tj]s$",
+      "icon"    : "/icons/files/angularpipe.svg"
+    },
+    {
+      "name"    : "Root | Angular Routing",
+      "pattern" : "rout?\\.[tj]s$",
+      "icon"    : "/icons/files/angularrouting.svg"
+    },
+    {
+      "name"    : "Root | Angular Resolver",
+      "pattern" : "resolver\\.[tj]s$",
+      "icon"    : "/icons/files/angularresolver.svg"
+    },
+    {
+      "name"    : "Root | Meta",
+      "pattern" : "^meta(.*?)$",
+      "icon"    : "/icons/files/liquid.svg"
+    }
+  ],
+  "folders"   : [
+    {
+      "name"    : "api",
+      "pattern" : "^(?:(.*)?\\.)?((?:api|rest|swagger|common).*?)+.*$",
+      "icon"    : "/icons/folders/api.svg"
+    },
+    {
+      "name"    : "data",
+      "pattern" : "^(data)$",
+      "icon"    : "/icons/folders/db.svg"
+    },
+    {
+      "name"    : "components",
+      "pattern" : "^(.*)+(components?|modules?)$",
+      "icon"    : "/icons/folders/components.svg"
+    },
+    {
+      "name"    : "ui",
+      "pattern" : "^[^\\w\\d\\s]?(theme?|color?|scheme?|skin?|ui?|shell)+.*?$",
+      "icon"    : "/icons/folders/themes.svg"
+    },
+    {
+      "name"    : "projects",
+      "pattern" : "^(projects|polyfills)?$",
+      "icon"    : "/icons/folders/packages.svg"
+    },
+    {
+      "name"    : "views",
+      "pattern" : "^(.*)?(area?|zone?|views?|templates?|pages?)+.*?$",
+      "icon"    : "/icons/folders/views.svg"
+    }
+  ]
+}
