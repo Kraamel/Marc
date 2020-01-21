@@ -15,42 +15,32 @@ export class BookmarksService {
   ) {
   }
 
-  // getAllBookmarks(): BookmarkEntity[] {
-  //   return this.bookmarks;
-  // }
-
-  getBookmarks(filterDto: GetBookmarksFilterDto, user: UserEntity): Promise<BookmarkEntity[]> {
-    return this.bookmarkRepository.getBookmarks(filterDto, user);
+  public async getBookmarks(filterDto: GetBookmarksFilterDto, user: UserEntity): Promise<BookmarkEntity[]> {
+    return await this.bookmarkRepository.getBookmarks(filterDto, user);
   }
 
-  async getBookmarkById(id: string, user: UserEntity): Promise<BookmarkEntity> {
-    const found = await this.bookmarkRepository.findOne({where: {id, userId: user.id}});
-    if (!found) {
+  public async getBookmark(id: string, user: UserEntity): Promise<BookmarkEntity> {
+    const bookmark = await this.bookmarkRepository.findOne({ where: { id, userId: user.id } });
+    if (!bookmark) {
       throw new NotFoundException(`Bookmark with ID:"${id}" not found`);
     }
-    return found;
-  }
-
-  async createBookmark(
-    createBookmarkDto: CreateBookmarkDto,
-    user: UserEntity): Promise<BookmarkEntity> {
-    return this.bookmarkRepository.createBookmark(createBookmarkDto, user);
-  }
-
-  async updateBookmarkStatus(
-    id: string,
-    status: BookmarkStatusEnum,
-    user: UserEntity): Promise<BookmarkEntity> {
-    const bookmark = await this.getBookmarkById(id, user);
-    bookmark.status = status;
-    await bookmark.save();
     return bookmark;
   }
 
-  async deleteBookmark(id: string, user: UserEntity): Promise<void> {
-    const deleted = await this.bookmarkRepository.delete({id, userId: user.id});
-    if (deleted.affected === 0) {
-      throw new NotFoundException(`Bookmark with ID:"${id}" not found`);
-    }
+  public async createBookmark(createBookmarkDto: CreateBookmarkDto, user: UserEntity): Promise<BookmarkEntity> {
+    return this.bookmarkRepository.createBookmark(createBookmarkDto, user);
+  }
+
+  public async updateBookmarkStatus(id: string, status: BookmarkStatusEnum, user: UserEntity): Promise<BookmarkEntity> {
+    const bookmark = await this.getBookmark(id, user);
+    bookmark.status = status;
+    await bookmark.save();
+
+    return bookmark;
+  }
+
+  public async deleteBookmark(id: string, user: UserEntity): Promise<void> {
+    const bookmark = await this.getBookmark(id, user);
+    await this.bookmarkRepository.remove(bookmark);
   }
 }

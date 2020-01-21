@@ -26,7 +26,7 @@ export class BookmarksController {
   getBookmarkById(
     @Param('id') id: string,
     @GetUser() user: UserEntity ): Promise<BookmarkEntity> {
-    return this.bookmarkService.getBookmarkById(id, user);
+    return this.bookmarkService.getBookmark(id, user);
   }
 
   @Post()
